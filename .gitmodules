@@ -1,0 +1,27 @@
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = https://github.com/wincent/command-t.git
+[submodule "bundle/Conque-GDB"]
+	path = bundle/Conque-GDB
+	url = https://github.com/vim-scripts/Conque-GDB.git
+[submodule "bundle/conqueterm-vim"]
+	path = bundle/conqueterm-vim
+	url = https://github.com/pthrasher/conqueterm-vim.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/skittles_berry"]
+	path = bundle/skittles_berry
+	url = https://github.com/shawncplus/skittles_berry.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion
+[submodule "bundle/vim-l9"]
+	path = bundle/vim-l9
+	url = https://github.com/eparreno/vim-l9.git
+[submodule "bundle/YouCompleteMe"]
+	path = bundle/YouCompleteMe
+	url = https://github.com/ghauerberg/YouCompleteMe.git
