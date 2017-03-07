@@ -38,6 +38,7 @@ NeoBundle 'Valloric/YouCompleteMe', {
      \ }
 
 NeoBundle 'starcraftman/vim-eclim'
+NeoBundle 'ghauerberg/vim-jdb'
 
  call neobundle#end()
 
@@ -53,6 +54,8 @@ colorscheme delek
 set backspace=indent,eol,start
 set t_Co=256
 " set termguicolors
+set expandtab
+set tabstop=2
 set nowrap
 syntax on
 
@@ -63,6 +66,25 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
+
+if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
+  map <Esc>OP <F1>
+  map <Esc>OQ <F2>
+  map <Esc>OR <F3>
+  map <Esc>OS <F4>
+  map <Esc>[16~ <F5>
+  map <Esc>[17~ <F6>
+  map <Esc>[18~ <F7>
+  map <Esc>[19~ <F8>
+  map <Esc>[20~ <F9>
+  map <Esc>[21~ <F10>
+  map <Esc>[23~ <F11>
+  map <Esc>[24~ <F12>
+endif
+
+map <F12> :echo 'mapped'<CR>
+map <F12> :echo 'mapped ctrl'<CR>
+
 
 filetype plugin indent on
 set ttimeoutlen=50
@@ -78,9 +100,21 @@ au BufRead,BufNewFile *.md set tw=80
 " Key mappings
 " imap <Nul> <Space>
 let mapleader=","
-nmap <F3> :FufFile
-nmap <F10> :make clean
-nmap <F9> :make all
+au BufRead,BufNewFile *.cpp nmap <F3> :FufFile
+au BufRead,BufNewFile *.cpp nmap <F10> :make clean
+au BufRead,BufNewFile *.cpp nmap <F9> :make all
+
+au BufRead,BufNewFile *.java nnoremap <F11> :JDBDebugProcess<cr>
+au BufRead,BufNewFile *.java nnoremap <F10> :JDBAttach localhost:5005<cr>
+au BufRead,BufNewFile *.java nnoremap <F9> :JDBCommand locals<cr>
+au BufRead,BufNewFile *.java nnoremap <F8> :JDBContinue<cr>
+au BufRead,BufNewFile *.java nnoremap <F5> :JDBStepIn<cr>
+au BufRead,BufNewFile *.java nnoremap <F6> :JDBStepOver<cr>
+au BufRead,BufNewFile *.java nnoremap <F7> :JDBStepUp<cr>
+au BufRead,BufNewFile *.java nnoremap <F4> :JDBBreakpointOnLine<cr>
+au BufRead,BufNewFile *.java nnoremap <F3> :JDBClearBreakpointOnLine<cr>
+au BufRead,BufNewFile *.java nnoremap <F12> :!gradle classes testClasses<cr>
+au BufRead,BufNewFile *.java set makeprg=gradle
 
 " Commenting line
 let @e='0i//j'
@@ -151,11 +185,15 @@ nmap <C-h> b
 nmap <C-j> 5j
 nmap <C-k> 5k
 nmap <C-l> e
+" change tap
+nmap <silent> ) :tabnext<CR>
+nmap <silent> ( :tabprev<CR>
 
 vmap > >gv
 vmap < <gv
 
 map <esc> :noh<cr>
+
 
 " Tab control
 nmap <silent> <A-Right> :wincmd l<cr>
