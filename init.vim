@@ -1,7 +1,7 @@
 let mapleader=";"
 call plug#begin()
 " Java
-Plug 'Dica-Developer/vim-jdb'
+" Plug 'Dica-Developer/vim-jdb'
 
 " Text exist
 Plug 'triglav/vim-visual-increment'
